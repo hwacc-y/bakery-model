@@ -6,7 +6,7 @@ curr_dir = os.path.dirname(__file__)
 # Simulation metadata goes here
 # database_filename = 'bakery_model_02.sqlite'  # where the database will be written
 scenario_name = 'test_kitchen'
-version = '03'
+version = '01'
 folder = 'pygen_test'
 start_year = 2020  # the first year optimized by the model
 end_year = 2021  # the last year optimized by the model
@@ -42,10 +42,10 @@ from pygenesys.commodity.resource import ethos
 
 CONV_OVEN.add_regional_data(region='MyBakery',
                             input_comm=DOUGH,
-                            output_comm=COOKIES,
+                            output_comm=COOKIES_DEM,
                             efficiency=48.0, # number of cookies per lb dough
                             tech_lifetime=25,
-                            capacity_factor_tech=oven_cf,
+                            # capacity_factor_tech=oven_cf,
                             cost_invest=800, # dollars per oven
                             cost_fixed=2, # spend $2/year on cleaning supplies
                             cost_variable=2.99*1.07, # cost of dough plus tax
@@ -57,3 +57,4 @@ resources_list = [DOUGH]
 emissions_list = [] # empty
 
 if __name__ =='__main__':
+    pass
