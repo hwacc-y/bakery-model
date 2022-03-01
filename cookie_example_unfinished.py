@@ -19,9 +19,9 @@ database_filename = f'{folder}/bakery_{scenario_name}_{version}.sqlite'  # where
 
 
 # Need Demands first
-from products import COOKIES_DEM
+from products import *
 
-COOKIES_DEM.add_demand(region='MyBakery',
+NH3_DEM.add_demand(region='MyBakery',
                        init_demand=4800, # in units of COOKIES_DEM
                        start_year=start_year,
                        end_year=end_year,
@@ -36,24 +36,70 @@ If the desire for cookies changes throughout the year you can specify
 ``COOKIES_DEM.set_distribution(...)``
 """
 
-from pantry import DOUGH
-from appliances import CONV_OVEN
+from pantry import *
+from appliances import *
 from pygenesys.commodity.resource import ethos
+from store import *
 
-CONV_OVEN.add_regional_data(region='MyBakery',
-                            input_comm=DOUGH,
-                            output_comm=COOKIES_DEM,
-                            efficiency=48.0, # number of cookies per lb dough
+elc_cost = 0.1161 # cents per kwh
+oven_power = 3  # kw
+mixer_power = 0.325  # kw
+fridge_power = 0.5  # kw
+
+
+import numpy as np
+n_points=24
+x = np.linspace(0,24,n_points)
+w = np.sin(8*x*np.pi/180)
+y = np.cos(8*x*np.pi/180)
+z = np.cos(8*x*np.pi/180+0.5)
+demand = np.array([w,w,w,w]).flatten()
+demand = demand/demand.sum()
+oven_cf = np.array([y,y,y,y]).flatten()
+mixer_cf = np.array([z,z,z,z]).flatten()
+demand[demand<0] = 0
+oven_cf[oven_cf<0] = 0
+mixer_cf[mixer_cf<0] = 0
+
+MIXER_ELC.add_regional_data(region='MyBakery',
+                            input_comm=[ELC, H2],
+                            output_comm=NH3,
+                            efficiency=[0.25, 2], # units of X to produce 1 lb of dough
                             tech_lifetime=25,
-                            # capacity_factor_tech=oven_cf,
-                            cost_invest=800, # dollars per oven
+                            capacity_factor_tech=mixer_cf,
+                            cost_invest=300, # dollars per mixer
                             cost_fixed=2, # spend $2/year on cleaning supplies
-                            cost_variable=2.99*1.07, # cost of dough plus tax
+                            cost_variable=mixer_power*elc_cost, # cost of dough plus tax
+                            min_capacity={2020:1}
                             )
 
+
+cost_of_dozen_eggs = 0.4  # 42 cents
+cost_of_pound_flour = 0.5  # 50 cents
+cost_of_pound_sugar = 0.6 # 59 cents
+cost_of_two_sticks_butter = 2 # 2 dollars, two sticks = 1 cup
+
+
+IMP_H2.add_regional_data(region='MyBakery',
+                          input_comm=ethos,
+                          output_comm=H2,
+                          efficiency=1.00,
+                          tech_lifetime=1000,
+                          cost_variable=cost_of_dozen_eggs/12,
+                          )
+
+
+
+STORE.add_regional_data(region='MyBakery',
+                        input_comm=NH3,
+                        output_comm=NH3_DEM,
+                        efficiency=1.0,
+                        tech_lifetime=1000)
+
+
 # this STAYS at the bottom
-demands_list = [COOKIES_DEM]
-resources_list = [DOUGH]
+demands_list = [NH3_DEM]
+resources_list = [H2, NH3, ELC]
 emissions_list = [] # empty
 
 if __name__ =='__main__':
