@@ -19,7 +19,7 @@ database_filename = f'{folder}/bakery_{scenario_name}_{version}.sqlite'  # where
 
 
 # Need Demands first
-from products import *
+from products import NH3_DEM
 
 NH3_DEM.add_demand(region='MyBakery',
                        init_demand=4800, # in units of COOKIES_DEM
@@ -88,6 +88,13 @@ IMP_H2.add_regional_data(region='MyBakery',
                           cost_variable=cost_of_dozen_eggs/12,
                           )
 
+IMP_ELC.add_regional_data(region='MyBakery',
+                          input_comm=ethos,
+                          output_comm=ELC,
+                          efficiency=1.00,
+                          tech_lifetime=1000,
+                          cost_variable=cost_of_dozen_eggs/12,
+                          )
 
 
 STORE.add_regional_data(region='MyBakery',
@@ -99,7 +106,7 @@ STORE.add_regional_data(region='MyBakery',
 
 # this STAYS at the bottom
 demands_list = [NH3_DEM]
-resources_list = [H2, NH3, ELC]
+resources_list = [H2, NH3, ELC, ethos]
 emissions_list = [] # empty
 
 if __name__ =='__main__':

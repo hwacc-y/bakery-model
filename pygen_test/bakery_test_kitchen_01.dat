@@ -1,0 +1,340 @@
+data ;
+
+set time_exist := 
+2019
+;
+
+set time_future := 
+2020
+2021
+2022
+;
+
+set time_season := 
+S1
+S2
+S3
+S4
+;
+
+set time_of_day := 
+H1
+H2
+H3
+H4
+H5
+H6
+H7
+H8
+H9
+H10
+H11
+H12
+H13
+H14
+H15
+H16
+H17
+H18
+H19
+H20
+H21
+H22
+H23
+H24
+;
+
+set regions := 
+MyBakery
+;
+
+set tech_production := 
+IMP_ELC
+IMP_H2
+MIXER_ELC
+STORE
+;
+
+set commodity_physical := 
+H2
+NH3
+ELC
+ethos
+;
+
+set commodity_demand := 
+NH3_DEM
+;
+
+param SegFrac := 
+    S1             H1         0.010416666666666666    
+    S1             H2         0.010416666666666666    
+    S1             H3         0.010416666666666666    
+    S1             H4         0.010416666666666666    
+    S1             H5         0.010416666666666666    
+    S1             H6         0.010416666666666666    
+    S1             H7         0.010416666666666666    
+    S1             H8         0.010416666666666666    
+    S1             H9         0.010416666666666666    
+    S1             H10         0.010416666666666666    
+    S1             H11         0.010416666666666666    
+    S1             H12         0.010416666666666666    
+    S1             H13         0.010416666666666666    
+    S1             H14         0.010416666666666666    
+    S1             H15         0.010416666666666666    
+    S1             H16         0.010416666666666666    
+    S1             H17         0.010416666666666666    
+    S1             H18         0.010416666666666666    
+    S1             H19         0.010416666666666666    
+    S1             H20         0.010416666666666666    
+    S1             H21         0.010416666666666666    
+    S1             H22         0.010416666666666666    
+    S1             H23         0.010416666666666666    
+    S1             H24         0.010416666666666666    
+    S2             H1         0.010416666666666666    
+    S2             H2         0.010416666666666666    
+    S2             H3         0.010416666666666666    
+    S2             H4         0.010416666666666666    
+    S2             H5         0.010416666666666666    
+    S2             H6         0.010416666666666666    
+    S2             H7         0.010416666666666666    
+    S2             H8         0.010416666666666666    
+    S2             H9         0.010416666666666666    
+    S2             H10         0.010416666666666666    
+    S2             H11         0.010416666666666666    
+    S2             H12         0.010416666666666666    
+    S2             H13         0.010416666666666666    
+    S2             H14         0.010416666666666666    
+    S2             H15         0.010416666666666666    
+    S2             H16         0.010416666666666666    
+    S2             H17         0.010416666666666666    
+    S2             H18         0.010416666666666666    
+    S2             H19         0.010416666666666666    
+    S2             H20         0.010416666666666666    
+    S2             H21         0.010416666666666666    
+    S2             H22         0.010416666666666666    
+    S2             H23         0.010416666666666666    
+    S2             H24         0.010416666666666666    
+    S3             H1         0.010416666666666666    
+    S3             H2         0.010416666666666666    
+    S3             H3         0.010416666666666666    
+    S3             H4         0.010416666666666666    
+    S3             H5         0.010416666666666666    
+    S3             H6         0.010416666666666666    
+    S3             H7         0.010416666666666666    
+    S3             H8         0.010416666666666666    
+    S3             H9         0.010416666666666666    
+    S3             H10         0.010416666666666666    
+    S3             H11         0.010416666666666666    
+    S3             H12         0.010416666666666666    
+    S3             H13         0.010416666666666666    
+    S3             H14         0.010416666666666666    
+    S3             H15         0.010416666666666666    
+    S3             H16         0.010416666666666666    
+    S3             H17         0.010416666666666666    
+    S3             H18         0.010416666666666666    
+    S3             H19         0.010416666666666666    
+    S3             H20         0.010416666666666666    
+    S3             H21         0.010416666666666666    
+    S3             H22         0.010416666666666666    
+    S3             H23         0.010416666666666666    
+    S3             H24         0.010416666666666666    
+    S4             H1         0.010416666666666666    
+    S4             H2         0.010416666666666666    
+    S4             H3         0.010416666666666666    
+    S4             H4         0.010416666666666666    
+    S4             H5         0.010416666666666666    
+    S4             H6         0.010416666666666666    
+    S4             H7         0.010416666666666666    
+    S4             H8         0.010416666666666666    
+    S4             H9         0.010416666666666666    
+    S4             H10         0.010416666666666666    
+    S4             H11         0.010416666666666666    
+    S4             H12         0.010416666666666666    
+    S4             H13         0.010416666666666666    
+    S4             H14         0.010416666666666666    
+    S4             H15         0.010416666666666666    
+    S4             H16         0.010416666666666666    
+    S4             H17         0.010416666666666666    
+    S4             H18         0.010416666666666666    
+    S4             H19         0.010416666666666666    
+    S4             H20         0.010416666666666666    
+    S4             H21         0.010416666666666666    
+    S4             H22         0.010416666666666666    
+    S4             H23         0.010416666666666666    
+    S4             H24         0.010416666666666666    
+;
+
+param CapacityToActivity := 
+    MyBakery             IMP_ELC         1.0    
+    MyBakery             IMP_H2         1.0    
+    MyBakery             MIXER_ELC         52560.0    
+    MyBakery             STORE         1.0    
+;
+
+param PlanningReserveMargin := 
+    MyBakery         0.02    
+;
+
+param GlobalDiscountRate := 
+0.001
+;
+
+param Demand := 
+    MyBakery         2020         NH3_DEM         4800.0    
+    MyBakery         2021         NH3_DEM         4800.0    
+;
+
+param TechInputSplit := 
+    MyBakery         2020         ELC             MIXER_ELC         0.111    
+    MyBakery         2021         ELC             MIXER_ELC         0.111    
+    MyBakery         2020         H2             MIXER_ELC         0.889    
+    MyBakery         2021         H2             MIXER_ELC         0.889    
+;
+
+param MinCapacity := 
+    MyBakery         2020         MIXER_ELC         1.0    
+;
+
+param LifetimeTech := 
+    MyBakery             IMP_ELC         1000.0    
+    MyBakery             IMP_H2         1000.0    
+    MyBakery             MIXER_ELC         25.0    
+    MyBakery             STORE         1000.0    
+;
+
+param CapacityFactorTech := 
+    MyBakery             S1             H1             MIXER_ELC         0.8775825618903728    
+    MyBakery             S1             H2             MIXER_ELC         0.7986805071107348    
+    MyBakery             S1             H3             MIXER_ELC         0.7028543276537489    
+    MyBakery             S1             H4             MIXER_ELC         0.5921345904282669    
+    MyBakery             S1             H5             MIXER_ELC         0.46886745841230576    
+    MyBakery             S1             H6             MIXER_ELC         0.33566497521064087    
+    MyBakery             S1             H7             MIXER_ELC         0.19534971557370992    
+    MyBakery             S1             H8             MIXER_ELC         0.05089497473920451    
+    MyBakery             S1             H9             MIXER_ELC         0.0    
+    MyBakery             S1             H10             MIXER_ELC         0.0    
+    MyBakery             S1             H11             MIXER_ELC         0.0    
+    MyBakery             S1             H12             MIXER_ELC         0.0    
+    MyBakery             S1             H13             MIXER_ELC         0.0    
+    MyBakery             S1             H14             MIXER_ELC         0.0    
+    MyBakery             S1             H15             MIXER_ELC         0.0    
+    MyBakery             S1             H16             MIXER_ELC         0.0    
+    MyBakery             S1             H17             MIXER_ELC         0.0    
+    MyBakery             S1             H18             MIXER_ELC         0.0    
+    MyBakery             S1             H19             MIXER_ELC         0.0    
+    MyBakery             S1             H20             MIXER_ELC         0.0    
+    MyBakery             S1             H21             MIXER_ELC         0.0    
+    MyBakery             S1             H22             MIXER_ELC         0.0    
+    MyBakery             S1             H23             MIXER_ELC         0.0    
+    MyBakery             S1             H24             MIXER_ELC         0.0    
+    MyBakery             S2             H1             MIXER_ELC         0.8775825618903728    
+    MyBakery             S2             H2             MIXER_ELC         0.7986805071107348    
+    MyBakery             S2             H3             MIXER_ELC         0.7028543276537489    
+    MyBakery             S2             H4             MIXER_ELC         0.5921345904282669    
+    MyBakery             S2             H5             MIXER_ELC         0.46886745841230576    
+    MyBakery             S2             H6             MIXER_ELC         0.33566497521064087    
+    MyBakery             S2             H7             MIXER_ELC         0.19534971557370992    
+    MyBakery             S2             H8             MIXER_ELC         0.05089497473920451    
+    MyBakery             S2             H9             MIXER_ELC         0.0    
+    MyBakery             S2             H10             MIXER_ELC         0.0    
+    MyBakery             S2             H11             MIXER_ELC         0.0    
+    MyBakery             S2             H12             MIXER_ELC         0.0    
+    MyBakery             S2             H13             MIXER_ELC         0.0    
+    MyBakery             S2             H14             MIXER_ELC         0.0    
+    MyBakery             S2             H15             MIXER_ELC         0.0    
+    MyBakery             S2             H16             MIXER_ELC         0.0    
+    MyBakery             S2             H17             MIXER_ELC         0.0    
+    MyBakery             S2             H18             MIXER_ELC         0.0    
+    MyBakery             S2             H19             MIXER_ELC         0.0    
+    MyBakery             S2             H20             MIXER_ELC         0.0    
+    MyBakery             S2             H21             MIXER_ELC         0.0    
+    MyBakery             S2             H22             MIXER_ELC         0.0    
+    MyBakery             S2             H23             MIXER_ELC         0.0    
+    MyBakery             S2             H24             MIXER_ELC         0.0    
+    MyBakery             S3             H1             MIXER_ELC         0.8775825618903728    
+    MyBakery             S3             H2             MIXER_ELC         0.7986805071107348    
+    MyBakery             S3             H3             MIXER_ELC         0.7028543276537489    
+    MyBakery             S3             H4             MIXER_ELC         0.5921345904282669    
+    MyBakery             S3             H5             MIXER_ELC         0.46886745841230576    
+    MyBakery             S3             H6             MIXER_ELC         0.33566497521064087    
+    MyBakery             S3             H7             MIXER_ELC         0.19534971557370992    
+    MyBakery             S3             H8             MIXER_ELC         0.05089497473920451    
+    MyBakery             S3             H9             MIXER_ELC         0.0    
+    MyBakery             S3             H10             MIXER_ELC         0.0    
+    MyBakery             S3             H11             MIXER_ELC         0.0    
+    MyBakery             S3             H12             MIXER_ELC         0.0    
+    MyBakery             S3             H13             MIXER_ELC         0.0    
+    MyBakery             S3             H14             MIXER_ELC         0.0    
+    MyBakery             S3             H15             MIXER_ELC         0.0    
+    MyBakery             S3             H16             MIXER_ELC         0.0    
+    MyBakery             S3             H17             MIXER_ELC         0.0    
+    MyBakery             S3             H18             MIXER_ELC         0.0    
+    MyBakery             S3             H19             MIXER_ELC         0.0    
+    MyBakery             S3             H20             MIXER_ELC         0.0    
+    MyBakery             S3             H21             MIXER_ELC         0.0    
+    MyBakery             S3             H22             MIXER_ELC         0.0    
+    MyBakery             S3             H23             MIXER_ELC         0.0    
+    MyBakery             S3             H24             MIXER_ELC         0.0    
+    MyBakery             S4             H1             MIXER_ELC         0.8775825618903728    
+    MyBakery             S4             H2             MIXER_ELC         0.7986805071107348    
+    MyBakery             S4             H3             MIXER_ELC         0.7028543276537489    
+    MyBakery             S4             H4             MIXER_ELC         0.5921345904282669    
+    MyBakery             S4             H5             MIXER_ELC         0.46886745841230576    
+    MyBakery             S4             H6             MIXER_ELC         0.33566497521064087    
+    MyBakery             S4             H7             MIXER_ELC         0.19534971557370992    
+    MyBakery             S4             H8             MIXER_ELC         0.05089497473920451    
+    MyBakery             S4             H9             MIXER_ELC         0.0    
+    MyBakery             S4             H10             MIXER_ELC         0.0    
+    MyBakery             S4             H11             MIXER_ELC         0.0    
+    MyBakery             S4             H12             MIXER_ELC         0.0    
+    MyBakery             S4             H13             MIXER_ELC         0.0    
+    MyBakery             S4             H14             MIXER_ELC         0.0    
+    MyBakery             S4             H15             MIXER_ELC         0.0    
+    MyBakery             S4             H16             MIXER_ELC         0.0    
+    MyBakery             S4             H17             MIXER_ELC         0.0    
+    MyBakery             S4             H18             MIXER_ELC         0.0    
+    MyBakery             S4             H19             MIXER_ELC         0.0    
+    MyBakery             S4             H20             MIXER_ELC         0.0    
+    MyBakery             S4             H21             MIXER_ELC         0.0    
+    MyBakery             S4             H22             MIXER_ELC         0.0    
+    MyBakery             S4             H23             MIXER_ELC         0.0    
+    MyBakery             S4             H24             MIXER_ELC         0.0    
+;
+
+param Efficiency := 
+    MyBakery             ethos             IMP_ELC         2020         ELC         1.0    
+    MyBakery             ethos             IMP_ELC         2021         ELC         1.0    
+    MyBakery             ethos             IMP_H2         2020         H2         1.0    
+    MyBakery             ethos             IMP_H2         2021         H2         1.0    
+    MyBakery             ELC             MIXER_ELC         2020         NH3         0.4444444444444444    
+    MyBakery             ELC             MIXER_ELC         2021         NH3         0.4444444444444444    
+    MyBakery             H2             MIXER_ELC         2020         NH3         0.4444444444444444    
+    MyBakery             H2             MIXER_ELC         2021         NH3         0.4444444444444444    
+    MyBakery             NH3             STORE         2020         NH3_DEM         1.0    
+    MyBakery             NH3             STORE         2021         NH3_DEM         1.0    
+;
+
+param CostInvest := 
+    MyBakery             MIXER_ELC         2020     300.0    
+    MyBakery             MIXER_ELC         2021     300.0    
+;
+
+param CostFixed := 
+    MyBakery         2020         MIXER_ELC         2020     2.0    
+    MyBakery         2021         MIXER_ELC         2020     2.0    
+    MyBakery         2021         MIXER_ELC         2021     2.0    
+;
+
+param CostVariable := 
+    MyBakery         2020         IMP_ELC         2020     0.03333333333333333    
+    MyBakery         2021         IMP_ELC         2020     0.03333333333333333    
+    MyBakery         2021         IMP_ELC         2021     0.03333333333333333    
+    MyBakery         2020         IMP_H2         2020     0.03333333333333333    
+    MyBakery         2021         IMP_H2         2020     0.03333333333333333    
+    MyBakery         2021         IMP_H2         2021     0.03333333333333333    
+    MyBakery         2020         MIXER_ELC         2020     0.0377325    
+    MyBakery         2021         MIXER_ELC         2020     0.0377325    
+    MyBakery         2021         MIXER_ELC         2021     0.0377325    
+;
+
